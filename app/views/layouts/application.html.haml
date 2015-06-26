@@ -7,4 +7,6 @@
     = javascript_include_tag 'application'
     = csrf_meta_tags
   %body
+    %nav
+      = link_to 'About', about_path
     = yield
