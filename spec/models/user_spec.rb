@@ -12,9 +12,16 @@ RSpec.describe User, type: :model do
 
     describe 'non-valid users' do
       let(:user) { build(:user, name: '') }
+      let(:user2) { build(:user, email: '') }
+      let(:malformed_email) { build(:user, email: 'fooa[at]bar.com')}
 
-      it 'will not be valid' do
+      it 'will not be valid with missing fields' do
         expect(user).not_to be_valid
+        expect(user2).not_to be_valid
+      end
+
+      it 'will ensure the email is in the correct format' do
+        expect(malformed_email).not_to be_valid
       end
     end
   end
