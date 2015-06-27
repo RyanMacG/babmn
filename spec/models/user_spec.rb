@@ -24,5 +24,14 @@ RSpec.describe User, type: :model do
         expect(malformed_email).not_to be_valid
       end
     end
+
+    describe 'email validations' do
+      let(:user) { create(:user) }
+      let(:user2) { build(:user, email: user.email.upcase) }
+
+      it 'will not let duplicate emails be signed up' do
+        expect(user2).not_to be_valid
+      end
+    end
   end
 end
