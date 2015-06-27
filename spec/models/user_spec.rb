@@ -3,15 +3,19 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   context 'validations' do
     describe 'valid users' do
-      let(:user) { create(:user) }
+      let(:user) { build(:user) }
 
-      it { is_expected.to be_valid }
+      it 'will be valid' do
+        expect(user).to be_valid
+      end
     end
 
     describe 'non-valid users' do
-      let(:user) { create(:user, name: '') }
+      let(:user) { build(:user, name: '') }
 
-      it { is_expected.not_to be_valid }
+      it 'will not be valid' do
+        expect(user).not_to be_valid
+      end
     end
   end
 end
