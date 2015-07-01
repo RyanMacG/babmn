@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+
+  has_secure_password
+
   before_save { email.downcase }
   validates_presence_of :name
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
